@@ -3,99 +3,33 @@
 <head>
   <title>Rock Paper Scissors Game</title>
   <meta charset="UTF-8"/>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <script>
-    // Your JavaScript goes here!
-    console.log("Hello, World!");
+  <h1>ROCK PAPER SCISSORS</h1>
+  <h2>First player to five wins.</h2>
 
-    let possibleMoves = ["Rock","Paper","Scissors"];
-    let gameResult;
-    let playerMove;
+  <div class="buttons">
+    <button class="btn" value="Rock" id="btn1">ROCK</button>
+    <button class="btn" value="Paper" id="btn2">PAPER</button>
+    <button class="btn" value="Scissors" id="btn3">SCISSORS</button>
+  </div>
+  <div id="rounds" class="rounds">
+    <p id="playerRound">Player's move is: </p>
+    <p id="computerRound">Computer's move is: </p>
+  </div>
+  <div id="winner" class='winner'>
+    <p id="roundWinner">Someone wins!</p>
+  </div>
+  <div id="scores" class= 'scores'>
+    <p id="playerScore">Player score: </p>
+    <p id="computerScore">Computer score: </p>
+  </div>
+  <div class="ngbtn" id=newGame>
+    <button id=btnNewGame>New Game</button>
+  </div>
 
-    game();
-    
-    function computerPlay(){
-      let computerMove = Math.round(Math.random()*2);
-      return possibleMoves[computerMove];
-    }
+  <script src="rps-script.js"></script>
 
-    function playerPlay(){
-      playerMove = prompt("What's your play?");
-      playerMove = playerMove.toLowerCase();
-      playerMove = (playerMove.charAt(0).toUpperCase()) + (playerMove.slice(1,playerMove.length));
-      return playerMove;
-    }
-
-    function playRound(playerSelection,computerSelection){
-      let returnPhrase;
-      if (playerSelection===computerSelection) {
-        console.log("Draw! You both selected " + playerSelection);
-        gameResult = "draw";
-        return;
-      } else if (playerSelection=="Rock") {
-        if (computerSelection=="Scissors"){
-          console.log("You win! " + playerSelection + " beats " + computerSelection);
-          gameResult = "player";
-          return;
-        } else if (computerSelection=="Paper"){
-          console.log("You lose! " + computerSelection + " beats " + playerSelection);
-          gameResult = "computer";
-          return;
-        }
-      } else if (playerSelection=="Paper"){
-        if (computerSelection=="Rock"){
-          console.log("You win! " + playerSelection + " beats " + computerSelection);
-          gameResult = "player";
-          return;
-        } else if (computerSelection=="Scissors"){
-          console.log("You lose! " + computerSelection + " beats " + playerSelection);
-          gameResult = "computer";
-          return;
-        }
-      } else if (playerSelection=="Scissors"){
-        if (computerSelection=="Paper"){
-          console.log("You win! " + playerSelection + " beats " + computerSelection);
-          gameResult = "player";
-          return;
-        } else if (computerSelection=="Rock"){
-          console.log("You lose! " + computerSelection + " beats " + playerSelection);
-          gameResult = "player";
-          return;
-        }
-      } 
-    }
-
-    function game(){
-      let playerScore = 0;
-      let computerScore = 0;
-      let gameCounter;
-
-      for (gameCounter=0;gameCounter<5;gameCounter++){
-        playRound(playerPlay(),computerPlay());
-        switch(gameResult){
-          case "player":
-            playerScore++;
-            console.log("Current scores-> Player: " + playerScore + " points. -- Computer: " + computerScore +"points.");
-          break;
-          case "computer":
-            computerScore++;
-            console.log("Current scores-> Player: " + playerScore + " points. -- Computer: " + computerScore +"points.");
-          break
-          case "draw": 
-            console.log("Current scores-> Player: " + playerScore + " points. -- Computer: " + computerScore +"points.");
-          break;
-        }
-      }
-
-      if(playerScore==computerScore){ 
-        console.log("FINAL RESULT - It's a draw! Nobody wins")
-      } else if(playerScore>computerScore){
-        console.log("PLAYER WINS")
-      } else{
-        console.log("COMPUTER WINS")
-      }
-    }
-  </script>
 </body>
 </html>
